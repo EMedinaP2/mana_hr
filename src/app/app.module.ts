@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
 import { APP_ROUTES } from './app.routes';
 
 //Servicio
-
+import { DatabaseService } from './services/database.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -28,7 +28,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     AppRoutingModule,
     RouterModule.forRoot(APP_ROUTES, { useHash: true }),
   ],
-  providers: [],
+  providers: [DatabaseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
