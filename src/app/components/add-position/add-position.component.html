@@ -1,1 +1,118 @@
-<p>add-position works!</p>
+<div class="container">
+    <h3>Add a new position</h3>
+    <form action="submit">
+
+        <div class="form-group">
+            <label for="position_code">Code</label>
+            <input type="text" name="position_code" id="position_code">
+        </div>
+
+        <div class="form-group">
+            <label for="status">Status</label>
+            <select name="status" id="status">
+                <option value="active">Active</option>
+                <option value="disabled">Disabled</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="start_date">Position Start Date</label>
+            <input type="date" name="start_date" id="start_date">
+        </div>
+
+        <div class="form-group">
+            <label for="type_position">Type</label>
+            <select name="type_position" id="type_position">
+                <option value="regular">Regular Position</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="change_reason">Change Reason</label>
+            <select name="change_reason" id="change_reason">
+                <option value="update">Update Position</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="job_code">Job Code</label>
+            <select name="job_code" id="job_code">
+                <option value="tech">Technician</option>
+                <option value="engineer">Engineer</option>
+                <option value="sales">Sales</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="job_tittle">Job Tittle</label>
+            <input type="text" name="job_tittle" id="job_tittle">
+        </div>
+
+        <div class="form-group">
+            <label for="position_tittle">Position Tittle</label>
+            <input type="text" name="position_tittle" id="position_tittle">
+        </div>
+
+        <div class="form-group">
+            <label for="fte">FTE</label>
+            <input type="number" name="fte" id="fte">
+        </div>
+
+        <div class="form-group">
+            <label for="tbh">To Be Hired</label>
+            <select name="tbh" id="tbh">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="company">Company</label>
+            <select name="company" id="company">
+                <option value="huf_polska">Huf Polska Sp. z o.o.</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="pay_range">Pay Range</label>
+            <select name="pay_range" id="pay_range">
+                <option value="pl_8">PL_8</option>
+                <option value="pl_9">PL_9</option>
+                <option value="pl_10">PL_10</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="pay_grade">Pay Grade</label>
+            <select name="pay_grade" id="pay_grade">
+                <option value="pl_8">PL_8</option>
+                <option value="pl_9">PL_9</option>
+                <option value="pl_10">PL_10</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="salary_ran_min">Salary Range Minimum</label>
+            <input type="number" name="salary_ran_min" id="salary_ran_min">
+        </div>
+
+        <div class="form-group">
+            <label for="salary_ran_mid">Salary Range Midpoint</label>
+            <input type="number" name="salary_ran_mid" id="salary_ran_mid">
+        </div>
+
+        <div class="form-group">
+            <label for="salary_ran_max">Salary Range Maximum</label>
+            <input type="number" name="salary_ran_max" id="salary_ran_max">
+        </div>
+
+        <div class="form-group">
+            <label for="bonus">Bonus</label>
+            <select name="bonus" id="bonus">
+                <option value="monthly_local">Monthly Local</option>
+            </select>
+        </div>
+        
+        <input class="submit" type="submit" name="" id="" value="Add">
+    </form>
+</div>
