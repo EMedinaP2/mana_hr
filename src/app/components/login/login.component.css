@@ -1,0 +1,72 @@
+ h3 {
+     font-family: sans-serif;
+     font-size: 4vh;
+     margin: 3vh;
+ }
+
+ .login-container {
+     max-width: 65vh;
+     margin: 20vh auto;
+     background-color: rgb(235 235 235);
+     padding: 10vh 2vh;
+     border-radius: 3vh;
+     display: flex;
+     justify-content: center;
+ }
+
+ .centered-content {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+ }
+
+ .form-group {
+     width: 100%;
+     margin-bottom: 10px;
+     display: flex;
+     flex-direction: column;
+ }
+
+ .form-control{
+    padding: 1vh;
+    border-radius: 1vh;
+    border-style: none;
+ }
+ .form{
+    width: 65%;
+    max-width: 65%;
+    overflow: auto; 
+ }
+
+ .link{
+    font-family: sans-serif;
+    font-weight: bold;
+    text-decoration: none;
+    color: rgb(0 0 0);
+    font-size: 1.8vh; 
+    font-style: oblique;
+  }
+
+  .link:hover{
+    color: rgb(5 65 190);
+  }
+ .spaced-letters{
+    letter-spacing: 1.5vh;
+ }
+ .submit{
+    background-color: rgb(0 0 0);
+    color: rgb(235 235 235);
+    border:solid;
+    border-radius: 1.5vh;
+    margin: 0 auto 2vh auto;
+    display: block;
+    width: 25%;
+    padding: 3px;
+    border: 1px solid #ccc;
+  }
+  .danger-text {
+    margin-top: 1.2vh;
+    font-family: sans-serif;
+    font-weight: lighter;
+    color: rgb(155, 1, 50);
+  }

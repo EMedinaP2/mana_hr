@@ -1,1 +1,41 @@
-<p>login Works!</p>
+<div class="login-container ">
+    <form autocomplete="off" class="form" [formGroup]="formUser" (ngSubmit)="login()">
+        <div class="centered-content">
+            <h3 class="spaced-letters">LOGIN</h3>
+        </div>
+
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Email*" aria-label="description"
+                aria-describedby="addon-wrapping" formControlName="email" [class.is-invalid]="invalidEmail"
+                [ngClass]="{'inp-error':this.invalidEmail}">
+            <small *ngIf="invalidEmail" class="centered-content danger-text">
+                Enter an valid email.
+            </small>
+        </div>
+        <br>
+        <div class="form-group">
+            <input type="password" class="form-control" placeholder="Password*" aria-label="description"
+                aria-describedby="addon-wrapping" formControlName="password" [class.is-invalid]="invalidPassword"
+                [ngClass]="{'inp-error':this.invalidPassword}">
+            <small *ngIf="invalidPassword" class="centered-content danger-text">
+                Enter a password.
+            </small>
+        </div>
+        <div *ngIf="loginFailed" class="form-group centered-content danger-text">
+            <small>
+                Login failed, please check your email and password.
+            </small>
+        </div>
+        
+    <!--<div class="form-group centered-content">
+            <a routerLink="/dashboard" class="link">
+                Forgot password?    
+            </a>
+        </div>
+     -->
+        <button type="submit" class="submit" data-bs-dismiss="modal">
+            Login
+        </button>
+    </form>
+
+</div>
