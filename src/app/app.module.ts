@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 //Rutas
 import { APP_ROUTES } from './app.routes';
 
@@ -18,6 +18,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
+    
     AppComponent,
     LoginComponent,
     AddPositionComponent,
@@ -26,6 +27,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(APP_ROUTES, { useHash: true }),
   ],
   providers: [DatabaseService],
