@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 export class DatabaseService {
   constructor() {}
 
-  private puestos: Puestos[] = [
+  public puestos: Puestos[] = [
     {
       code: '1234567890',
       status: true,
