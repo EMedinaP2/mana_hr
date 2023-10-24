@@ -21,4 +21,8 @@ export class DashboardComponent implements OnInit {
   logout() {
     this.router.navigate(['/login']);
   }
+
+  goToAddPosition(){
+    this.router.navigate(['/add-position']);
+  }
 }

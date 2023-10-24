@@ -31,7 +31,10 @@
   </div>
 </div>
 <div class="table_div">
-  <div class="table_title">Jobs</div>
+  <div class="table_title">
+    <p>Jobs</p>
+    <button (click)="goToAddPosition()" class="add_new_job">Add new job +</button>
+  </div>
   <div class="table2_div">
     <table class="table">
       <tr class="tr1">
@@ -54,7 +57,7 @@
       </tr>
       <tr *ngFor="let puesto of puestos" class="valores_tabla">
         <td>{{ puesto.job_title }}</td>
-        <td>1</td>
+        <td>6</td>
         <td>120% ↑</td>
         <td>1</td>
         <td>2</td>
@@ -62,8 +65,12 @@
         <td>
           <div class="graph">
             <div style="background-color: red; height: 100%; width: 35%"></div>
-            <div style="background-color: orange; height: 100%; width: 25%"></div>
-            <div style="background-color: green; height: 100%; width: 40%"></div>
+            <div
+              style="background-color: orange; height: 100%; width: 25%"
+            ></div>
+            <div
+              style="background-color: green; height: 100%; width: 40%"
+            ></div>
           </div>
         </td>
       </tr>

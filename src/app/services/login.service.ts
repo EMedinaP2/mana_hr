@@ -8,11 +8,11 @@ export class LoginService {
 
   private users: Users[] = [
     {
-      user: 'admin',
+      user: 'admin@mail.com',
       password: 'password',
     },
     {
-      user: 'user',
+      user: 'user@mail.com',
       password: 'password',
     },
     {

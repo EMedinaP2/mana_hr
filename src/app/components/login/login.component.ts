@@ -1,58 +1,73 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { LoginService, Users } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
-
 export class LoginComponent {
+  formUser: FormGroup;
 
-  formUser: FormGroup
+  users: Users[] = [];
 
-  loginFailed = false
-  adminAccount = "admin@mail.com"
-  adminPassword = "password"
+  loginFailed = false;
 
-  constructor(private router: Router,
-    private fb: FormBuilder) {
-
+  constructor(
+    private router: Router,
+    private fb: FormBuilder,
+    private loginSrv: LoginService
+  ) {
     this.formUser = this.fb.group({
-      email: ['', [Validators.required,Validators.email]],
+      email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]],
     });
   }
 
+  ngOnInit() {
+    this.users = this.loginSrv.getUsers();
+  }
+
   get invalidEmail() {
-      return this.formUser!.get('email')!.invalid && this.formUser!.get('email')!.touched
-    
+    return (
+      this.formUser!.get('email')!.invalid &&
+      this.formUser!.get('email')!.touched
+    );
   }
 
   get invalidPassword() {
-    return this.formUser.get('password')!.invalid && this.formUser.get('password')!.touched
+    return (
+      this.formUser.get('password')!.invalid &&
+      this.formUser.get('password')!.touched
+    );
   }
 
   login() {
-    console.log("Hola");
-    
-    if(this.formUser.invalid){
-      return Object.values( this.formUser.controls ).forEach( control =>{
+    if (this.formUser.invalid) {
+      return Object.values(this.formUser.controls).forEach((control) => {
         control.markAsTouched();
-      })
+      });
     }
-    
-    let user = this.formUser.value.email 
-    let password = this.formUser.value.password
 
-    if(user != this.adminAccount || password != this.adminPassword){
-        console.log("Inicio de sesión fallida")
-        this.loginFailed = true      
-    }else{
-      console.log("OK")
+    let user = this.formUser.value.email;
+    let password = this.formUser.value.password;
+
+    let session = false;
+
+    this.users.forEach((usr) => {
+      if (user == usr.user && password == usr.password) {
+        user = usr.user;
+        console.log('sesion correcta ', user);
+        session = true;
+      }
+    });
+    if (session) {
       this.router.navigate(['/dashboard']);
+    } else {
+      this.loginFailed = true
+      console.log('sesion fallida');
     }
-
   }
 }
