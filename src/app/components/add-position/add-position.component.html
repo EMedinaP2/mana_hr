@@ -1,119 +1,184 @@
 <div style="display: flex;">
   <div class="container">
     <h3>Add a new position</h3>
-    <form action="submit">
+    <form action="submit" [formGroup]="formPuesto" (ngSubmit)="addPosition()">
       <div class="form-group">
         <label for="position_code">Code</label>
-        <input type="text" name="position_code" id="position_code" />
+        <input type="text" name="position_code" id="position_code" aria-label="description"
+          aria-describedby="addon-wrapping" formControlName="code" [class.is-invalid]="invalidCode" />
+        <small *ngIf="invalidCode" class="centered-content danger-text">
+          Enter a code.
+        </small>
       </div>
 
       <div class="form-group">
         <label for="status">Status</label>
-        <select name="status" id="status">
-          <option value="active">Active</option>
-          <option value="disabled">Disabled</option>
+        <select name="status" id="status" formControlName="status" [class.is-invalid]="invalidStatus">
+          <option value="true">Active</option>
+          <option value="false">Disabled</option>
         </select>
+        <small *ngIf="invalidStatus" class="centered-content danger-text">
+          Select a status.
+        </small>
       </div>
 
       <div class="form-group">
         <label for="start_date">Position Start Date</label>
-        <input type="date" name="start_date" id="start_date" />
+        <input type="date" name="start_date" id="start_date" formControlName="start" [class.is-invalid]="invalidStart" />
+        <small *ngIf="invalidStart" class="centered-content danger-text">
+          Select a valid date.
+        </small>
       </div>
 
       <div class="form-group">
         <label for="type_position">Type</label>
-        <select name="type_position" id="type_position">
+        <select name="type_position" id="type_position" formControlName="type" [class.is-invalid]="invalidType">
           <option value="regular">Regular Position</option>
         </select>
+        <small *ngIf="invalidType" class="centered-content danger-text">
+          Select a type.
+        </small>
       </div>
 
       <div class="form-group">
         <label for="change_reason">Change Reason</label>
-        <select name="change_reason" id="change_reason">
+        <select name="change_reason" id="change_reason" formControlName="change_reason" [class.is-invalid]="invalidChangeReason">
           <option value="update">Update Position</option>
         </select>
+        <small *ngIf="invalidChangeReason" class="centered-content danger-text">
+          Select a change reason.
+        </small>
       </div>
 
       <div class="form-group">
         <label for="job_code">Job Code</label>
-        <select name="job_code" id="job_code">
+        <select name="job_code" id="job_code" formControlName="job_code" [class.is-invalid]="invalidJobCode">
           <option value="tech">Technician</option>
           <option value="engineer">Engineer</option>
           <option value="sales">Sales</option>
         </select>
+        <small *ngIf="invalidJobCode" class="centered-content danger-text">
+          Select a job code.
+        </small>
       </div>
 
       <div class="form-group">
         <label for="job_tittle">Job Tittle</label>
-        <input type="text" name="job_tittle" id="job_tittle" />
+        <input type="text" name="job_tittle" id="job_title" formControlName="job_title"  [class.is-invalid]="invalidJobTittle" />
+        <small *ngIf="invalidJobTittle" class="centered-content danger-text">
+          Enter a job title.
+        </small>
       </div>
 
       <div class="form-group">
         <label for="position_tittle">Position Tittle</label>
-        <input type="text" name="position_tittle" id="position_tittle" />
+        <input type="text" name="position_tittle" id="position_tittle" formControlName="position" [class.is-invalid]="invalidPosition"/>
+        <small *ngIf="invalidPosition" class="centered-content danger-text">
+          Enter a position name.
+        </small>
       </div>
 
       <div class="form-group">
         <label for="fte">FTE</label>
-        <input type="number" name="fte" id="fte" />
+        <input type="number" name="fte" id="fte" formControlName="FTE" [class.is-invalid]="invalidFTE" />
+        <small *ngIf="invalidFTE" class="centered-content danger-text">
+          Enter a FTE.
+        </small>
       </div>
 
       <div class="form-group">
         <label for="tbh">To Be Hired</label>
-        <select name="tbh" id="tbh">
-          <option value="yes">Yes</option>
-          <option value="no">No</option>
+        <select name="tbh" id="tbh" formControlName="to_be_hired" [class.is-invalid]="invalidToBeHired">
+          <option value="true">Yes</option>
+          <option value="false">No</option>
         </select>
+        <small *ngIf="invalidToBeHired" class="centered-content danger-text">
+          Select an option.
+        </small>
       </div>
 
       <div class="form-group">
         <label for="company">Company</label>
-        <select name="company" id="company">
+        <select name="company" id="company" formControlName="company" [class.is-invalid]="invalidCompany">
           <option value="huf_polska">Huf Polska Sp. z o.o.</option>
         </select>
+        <small *ngIf="invalidCompany" class="centered-content danger-text">
+          Select a company.
+        </small>
       </div>
 
       <div class="form-group">
         <label for="pay_range">Pay Range</label>
-        <select name="pay_range" id="pay_range">
+        <select name="pay_range" id="pay_range" formControlName="pay_range" [class.is-invalid]="invalidPayRange">
           <option value="pl_8">PL_8</option>
           <option value="pl_9">PL_9</option>
           <option value="pl_10">PL_10</option>
         </select>
+        <small *ngIf="invalidPayRange" class="centered-content danger-text">
+          Select a pay range.
+        </small>
       </div>
 
       <div class="form-group">
         <label for="pay_grade">Pay Grade</label>
-        <select name="pay_grade" id="pay_grade">
+        <select name="pay_grade" id="pay_grade" formControlName="pay_grade" [class.is-invalid]="invalidPayGrade">
           <option value="pl_8">PL_8</option>
           <option value="pl_9">PL_9</option>
           <option value="pl_10">PL_10</option>
         </select>
+        <small *ngIf="invalidPayGrade" class="centered-content danger-text">
+          Select a pay grade.
+        </small>
+      </div>
+
+
+      <div class="form-group">
+        <label for="salary_ran_min">Salary For Position</label>
+        <input type="number" name="salary_ran_min" id="salary_ran_min" formControlName="salary_for_position"
+          [class.is-invalid]="invalidSalary" />
+        <small *ngIf="invalidSalary" class="centered-content danger-text">
+          Enter a salary for position.
+        </small>
       </div>
 
       <div class="form-group">
         <label for="salary_ran_min">Salary Range Minimum</label>
-        <input type="number" name="salary_ran_min" id="salary_ran_min" />
+        <input type="number" name="salary_ran_min" id="salary_ran_min" formControlName="salary_r_min"
+          [class.is-invalid]="invalidSalaryMin" />
+        <small *ngIf="invalidSalaryMin" class="centered-content danger-text">
+          Enter a minimum range salary.
+        </small>
       </div>
 
       <div class="form-group">
         <label for="salary_ran_mid">Salary Range Midpoint</label>
-        <input type="number" name="salary_ran_mid" id="salary_ran_mid" />
+        <input type="number" name="salary_ran_mid" id="salary_ran_mid" formControlName="salary_r_mid"
+          [class.is-invalid]="invalidSalaryMid" />
+        <small *ngIf="invalidSalaryMid" class="centered-content danger-text">
+          Enter a midpoint range salary
+        </small>
       </div>
 
       <div class="form-group">
         <label for="salary_ran_max">Salary Range Maximum</label>
-        <input type="number" name="salary_ran_max" id="salary_ran_max" />
+        <input type="number" name="salary_ran_max" id="salary_ran_max" formControlName="salary_r_max"
+          [class.is-invalid]="invalidSalaryMax" />
+        <small *ngIf="invalidSalaryMax" class="centered-content danger-text">
+          Enter a maximun range salary.
+        </small>
       </div>
 
       <div class="form-group">
         <label for="bonus">Bonus</label>
-        <select name="bonus" id="bonus">
+        <select name="bonus" id="bonus" formControlName="bonus" [class.is-invalid]="invalidBonus">
           <option value="monthly_local">Monthly Local</option>
         </select>
+        <small *ngIf="invalidBonus" class="centered-content danger-text">
+          Select a bonus.
+        </small>
       </div>
 
-      <input class="submit" type="submit" name="" id="" value="Add" />
+      <input class="submit" type="submit" value="Add" />
     </form>
   </div>
 
