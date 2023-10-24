@@ -130,19 +130,62 @@ export class DatabaseService {
   getPuestos() {
     return this.puestos;
   }
-  
-  addPositon(){
-  }
 
-  getTable(){
-    let table: any = [];
-    this.puestos.forEach((element) => {
-      table.append({"job_title": element.job_title, "number": 1, "salaries": element})
-    })
-    
-    return table
+  addPositon() {}
+
+  getTable() {
+    let initial_table: any = [];
+
+    this.puestos.forEach((puesto) => {
+      let underpaid_const = 1;
+      let normalpaid_const = 1;
+      let overpaid_const = 1;
+      let promedio = (puesto.salary_for_position * 100) / puesto.salary_r_mid;
+      let old_puesto = initial_table.find((element: any) => {
+        return element.job_title == puesto.job_title;
+      });
+      // Ya existe el puesto en el arreglo
+      if (old_puesto) {
+        old_puesto.number++;
+        old_puesto.prot.push(promedio);
+        let sumatoria = 0;
+        old_puesto.prot.forEach((num: any) => {
+          sumatoria += num;
+        });
+        old_puesto.salaries = `${(sumatoria / old_puesto.prot.length).toFixed(
+          2
+        )}%`;
+
+        if (old_puesto.salary_for_position > puesto.salary_r_max) {
+          old_puesto.salary_level.overpaid += overpaid_const;
+        } else if (old_puesto.salary_for_position < puesto.salary_r_min) {
+          old_puesto.salary_level.underpaid += underpaid_const;
+        } else {
+          old_puesto.salary_level.normal += normalpaid_const;
+        }
+      } else {
+        // No existe el puesto en el arreglo
+        let salary_level = {};
+
+        if (puesto.salary_for_position > puesto.salary_r_max) {
+          salary_level = { underpaid: 0, normal: 0, overpaid: 1 };
+        } else if (puesto.salary_for_position < puesto.salary_r_min) {
+          salary_level = { underpaid: 1, normal: 0, overpaid: 0 };
+        } else {
+          salary_level = { underpaid: 0, normal: 1, overpaid: 0 };
+        }
+        initial_table.push({
+          job_title: puesto.job_title,
+          number: 1,
+          salaries: `${promedio.toFixed(2)}%`,
+          prot: [promedio],
+          salary_level: salary_level,
+        });
+      }
+    });
+
+    return initial_table;
   }
-  
 }
 
 export interface Puestos {

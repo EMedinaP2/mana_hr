@@ -33,7 +33,9 @@
 <div class="table_div">
   <div class="table_title">
     <p>Jobs</p>
-    <button (click)="goToAddPosition()" class="add_new_job">Add new job +</button>
+    <button (click)="goToAddPosition()" class="add_new_job">
+      Add new job +
+    </button>
   </div>
   <div class="table2_div">
     <table class="table">
@@ -55,15 +57,15 @@
         <th style="color: green">Overpaid</th>
         <th></th>
       </tr>
-      <tr *ngFor="let puesto of puestos" class="valores_tabla">
-        <td>{{ puesto.job_title }}</td>
-        <td>6</td>
-        <td>120% ↑</td>
-        <td>1</td>
-        <td>2</td>
-        <td>3</td>
+      <tr *ngFor="let table of table; index as i" class="valores_tabla">
+        <td>{{ table.job_title }}</td>
+        <td>{{ table.number }}</td>
+        <td>{{ table.salaries }}</td>
+        <td>{{ table.salary_level.underpaid }}</td>
+        <td>{{ table.salary_level.normal }}</td>
+        <td>{{ table.salary_level.overpaid }}</td>  
         <td>
-          <div class="graph">
+          <div class="graph{{i}} graph">
             <div style="background-color: red; height: 100%; width: 35%"></div>
             <div
               style="background-color: orange; height: 100%; width: 25%"
