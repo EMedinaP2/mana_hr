@@ -125,6 +125,17 @@ export class DatabaseService {
     return this.puestos;
   }
   
+  addPositon(){
+  }
+
+  getTable(){
+    let table: any = [];
+    this.puestos.forEach((element) => {
+      table.append({"job_title": element.job_title, "number": 1, "salaries": element})
+    })
+    
+    return table
+  }
   
 }
 
@@ -142,6 +153,7 @@ export interface Puestos {
   compnay: string;
   pay_range: string;
   pay_grade: string;
+  // salary: string;
   salary_r_min: string;
   salary_r_mid: string;
   salary_r_max: string;
