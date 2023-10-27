@@ -2,6 +2,10 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Puestos, DatabaseService } from 'src/app/services/database.service';
+import Catalog from 'src/interfaces/catalog.interface';
+import { CatalogService } from 'src/app/services/catalog.service';
+import Puesto from 'src/interfaces/position.interface';
+import { PuestoService } from 'src/app/services/puesto.service';
 
 @Component({
   selector: 'app-add-position',
@@ -12,13 +16,30 @@ export class AddPositionComponent {
 
   formPuesto: FormGroup;
   puestos: Puestos[] = []
+  typeCatalog: Catalog[] = []
+  jobCatalog: Catalog[] = []
+  benefitsCatalog: Catalog[] = []
+  payCatalog: Catalog[] = []
+  bonusCatalog: Catalog[] = []
+  changeReasonCatalog: Catalog[] = []
+  companyCatalog: Catalog[] = []
+
 
   ngOnInit() {
     this.puestos = this.databaseService.getPuestos();
+    this.catalogService.getCatalogByName("Type").subscribe(catalogs => this.typeCatalog = catalogs)
+    this.catalogService.getCatalogByName("Job code").subscribe(catalogs => this.jobCatalog = catalogs)
+    this.catalogService.getCatalogByName("Benefits").subscribe(catalogs => this.benefitsCatalog = catalogs)
+    this.catalogService.getCatalogByName("Pay range").subscribe(catalogs => this.payCatalog = catalogs)
+    this.catalogService.getCatalogByName("Bonus").subscribe(catalogs => this.bonusCatalog = catalogs)
+    this.catalogService.getCatalogByName("Change reason").subscribe(catalogs => this.changeReasonCatalog = catalogs)
+    this.catalogService.getCatalogByName("Company").subscribe(catalogs => this.companyCatalog = catalogs)
   }
   constructor(private router: Router,
     private fb: FormBuilder,
-    private databaseService: DatabaseService) {
+    private databaseService: DatabaseService,
+    private catalogService: CatalogService,
+    private positionService: PuestoService) {
     this.formPuesto = this.fb.group({
       code: ['', [Validators.required]],
       status: ['', [Validators.required]],
@@ -34,8 +55,7 @@ export class AddPositionComponent {
       pay_range: ['', [Validators.required]],
       pay_grade: ['', [Validators.required]],
       salary_for_position: ['', [Validators.required]],
-      extras: ['', [Validators.required]],
-      total: ['', [Validators.required]],
+      benefits: ['', [Validators.required]],
       salary_r_min: ['', [Validators.required]],
       salary_r_mid: ['', [Validators.required]],
       salary_r_max: ['', [Validators.required]],
@@ -169,6 +189,13 @@ export class AddPositionComponent {
     );
   }
 
+  get invalidBenefits() {
+    return (
+      this.formPuesto!.get('benefits')!.invalid &&
+      this.formPuesto!.get('benefits')!.touched
+    );
+  }
+
   goBack() {
     this.router.navigate(['/dashboard']);
   }
@@ -179,7 +206,12 @@ export class AddPositionComponent {
         control.markAsTouched();
       });
     }
-    let nuevoPuesto: Puestos = {
+
+    let extras = parseFloat(this.formPuesto.value.bonus.value) + parseFloat(this.formPuesto.value.benefits.value)
+    let total = this.formPuesto.value.salary_for_position + extras
+    
+    let nuevoPuesto: Puesto = {
+  
       code: this.formPuesto.value.code,
       status: this.formPuesto.value.status,
       start: this.formPuesto.value.start,
@@ -194,15 +226,16 @@ export class AddPositionComponent {
       pay_range: this.formPuesto.value.pay_range,
       pay_grade: this.formPuesto.value.pay_grade,
       salary_for_position: this.formPuesto.value.salary_for_position,
-      extras: this.formPuesto.value.extras,
-      total: this.formPuesto.value.total,
+      extras: extras,
+      total: total,
       salary_r_min: this.formPuesto.value.salary_r_min,
       salary_r_mid: this.formPuesto.value.salary_r_mid,
       salary_r_max: this.formPuesto.value.salary_r_max,
       bonus: this.formPuesto.value.bonus,
-      compare_to_market: this.formPuesto.value.compare_to_market
+      benefits: this.formPuesto.value.benefits,
+      compare_to_market: "%" +  ((total) * 100 / this.formPuesto.value.salary_r_mid).toFixed(2)
     }
-    this.puestos.push(nuevoPuesto)
+    this.positionService.addPosition(nuevoPuesto)
     console.log(this.databaseService.getPuestos())
     this.goBack()
   }

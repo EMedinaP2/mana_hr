@@ -1,0 +1,9 @@
+{
+  "hosting": [
+    {
+      "target": "mana_hr",
+      "source": ".",
+      "frameworksBackend": {}
+    }
+  ]
+}

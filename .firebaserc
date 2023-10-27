@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "ml-testtool-desa": {
+      "hosting": {
+        "mana_hr": [
+          "ml-testtool-desa"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "ml-testtool-desa"
+  }
+}
