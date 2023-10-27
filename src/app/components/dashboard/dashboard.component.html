@@ -75,22 +75,38 @@
   <div *ngIf="modal == true" class="modal_exterior" (click)="showModal()">
     <div class="modal table2_div" id="modal">
       <table class="table">
-        <tr>{{job_title}}</tr>
-        <tr class="tr1">
+        <tr>
           <th></th>
           <th></th>
           <th></th>
-          <th>Number of eployees</th>
           <th></th>
-          <th>Distribution of underpaid/overpaid employees</th>
+          <th>{{ job_title }}</th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
         </tr>
-        <tr class="tr2">
-          <th>Job Category</th>
-          <th>Number</th>
-          <th style="color: red">Underpaid</th>
-          <th style="color: orange">Corresponding to the market</th>
-          <th style="color: green">Overpaid</th>
-          <th></th>
+        <tr>
+          <th>Position</th>
+          <th>Company</th>
+          <th>Status</th>
+          <th>To be hired</th>
+          <th>Salary for position</th>
+          <th>Extras</th>
+          <th>Bonus</th>
+          <th>Total</th>
+          <th>Compare to Market</th>
+        </tr>
+        <tr *ngFor="let job of subTable">
+          <td>{{job.position}}</td>
+          <td>{{job.company}}</td>
+          <td>{{job.status}}</td>
+          <td>{{job.to_be_hired}}</td>
+          <td>{{job.salary_for_position}}</td>
+          <td>{{job.extras}}</td>
+          <td>{{job.total}}</td>
+          <td>{{job.bonus}}</td>
+          <td>{{job.compare_to_market}}</td>
         </tr>
       </table>
     </div>

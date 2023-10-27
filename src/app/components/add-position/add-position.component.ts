@@ -34,6 +34,8 @@ export class AddPositionComponent {
       pay_range: ['', [Validators.required]],
       pay_grade: ['', [Validators.required]],
       salary_for_position: ['', [Validators.required]],
+      extras: ['', [Validators.required]],
+      total: ['', [Validators.required]],
       salary_r_min: ['', [Validators.required]],
       salary_r_mid: ['', [Validators.required]],
       salary_r_max: ['', [Validators.required]],
@@ -192,10 +194,13 @@ export class AddPositionComponent {
       pay_range: this.formPuesto.value.pay_range,
       pay_grade: this.formPuesto.value.pay_grade,
       salary_for_position: this.formPuesto.value.salary_for_position,
+      extras: this.formPuesto.value.extras,
+      total: this.formPuesto.value.total,
       salary_r_min: this.formPuesto.value.salary_r_min,
       salary_r_mid: this.formPuesto.value.salary_r_mid,
       salary_r_max: this.formPuesto.value.salary_r_max,
-      bonus: this.formPuesto.value.bonus
+      bonus: this.formPuesto.value.bonus,
+      compare_to_market: this.formPuesto.value.compare_to_market
     }
     this.puestos.push(nuevoPuesto)
     console.log(this.databaseService.getPuestos())

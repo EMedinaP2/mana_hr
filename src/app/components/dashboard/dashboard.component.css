@@ -204,4 +204,5 @@ table tr:nth-child(even) {
   width: 90%;
   height: 60%;
   background-color: white;
+  overflow: scroll;
 }

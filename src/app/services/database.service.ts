@@ -20,10 +20,13 @@ export class DatabaseService {
       pay_range: 'PL_9',
       pay_grade: 'PL_9',
       salary_for_position: 1350,
+      extras: 1000,
+      total: 2600 + 1000,
       salary_r_min: 1500,
       salary_r_mid: 2250,
       salary_r_max: 3500,
       bonus: 'Monthly Local',
+      compare_to_market: '98%'
     },
     {
       code: '0987654321',
@@ -38,12 +41,15 @@ export class DatabaseService {
       to_be_hired: false,
       company: 'Google',
       salary_for_position: 3500,
+      extras: 1000,
+      total: 2600 + 1000,
       pay_range: 'PL_11',
       pay_grade: 'PL_11',
       salary_r_min: 2000,
       salary_r_mid: 3000,
       salary_r_max: 4000,
       bonus: 'Monthly Local',
+      compare_to_market: '98%'
     },
     {
       code: '1234598760',
@@ -60,10 +66,13 @@ export class DatabaseService {
       pay_range: 'PL_8',
       pay_grade: 'PL_8',
       salary_for_position: 2300,
+      extras: 1000,
+      total: 2600 + 1000,
       salary_r_min: 1000,
       salary_r_mid: 1500,
       salary_r_max: 2000,
       bonus: 'Weekly Locla',
+      compare_to_market: '98%'
     },
     {
       code: '0123456988',
@@ -80,10 +89,13 @@ export class DatabaseService {
       pay_range: 'PL_9',
       pay_grade: 'PL_9',
       salary_for_position: 1600,
+      extras: 1000,
+      total: 2600 + 1000,
       salary_r_min: 1000,
       salary_r_mid: 1500,
       salary_r_max: 2000,
       bonus: 'Monthly Local',
+      compare_to_market: '98%'
     },
     {
       code: '1234568740',
@@ -100,10 +112,13 @@ export class DatabaseService {
       pay_range: 'PL_8',
       pay_grade: 'PL_8',
       salary_for_position: 2500,
+      extras: 1000,
+      total: 2600 + 1000,
       salary_r_min: 1000,
       salary_r_mid: 1500,
       salary_r_max: 2000,
       bonus: 'Weekly Local',
+      compare_to_market: '98%'
     },
     {
       code: '1234568740',
@@ -120,10 +135,13 @@ export class DatabaseService {
       pay_range: 'PL_8',
       pay_grade: 'PL_8',
       salary_for_position: 2500,
+      extras: 1000,
+      total: 2600 + 1000,
       salary_r_min: 1000,
       salary_r_mid: 1500,
       salary_r_max: 2000,
       bonus: 'Weekly Local',
+      compare_to_market: '98%'
     },
     {
       code: '0123456988',
@@ -140,10 +158,13 @@ export class DatabaseService {
       pay_range: 'PL_9',
       pay_grade: 'PL_9',
       salary_for_position: 800,
+      extras: 1000,
+      total: 2600 + 1000,
       salary_r_min: 1000,
       salary_r_mid: 1500,
       salary_r_max: 2000,
       bonus: 'Monthly Local',
+      compare_to_market: '98%'
     },
     {
       code: '0123456988',
@@ -160,10 +181,13 @@ export class DatabaseService {
       pay_range: 'PL_9',
       pay_grade: 'PL_9',
       salary_for_position: 2600,
+      extras: 1000,
+      total: 2600 + 1000,
       salary_r_min: 1000,
       salary_r_mid: 1500,
       salary_r_max: 2000,
       bonus: 'Monthly Local',
+      compare_to_market: '98%'
     },
     {
       code: '1234568740',
@@ -180,10 +204,13 @@ export class DatabaseService {
       pay_range: 'PL_8',
       pay_grade: 'PL_8',
       salary_for_position: 2500,
+      extras: 1000,
+      total: 2600 + 1000,
       salary_r_min: 1000,
       salary_r_mid: 1500,
       salary_r_max: 2000,
       bonus: 'Weekly Local',
+      compare_to_market: '98%'
     },
     {
       code: '1234568740',
@@ -200,10 +227,13 @@ export class DatabaseService {
       pay_range: 'PL_8',
       pay_grade: 'PL_8',
       salary_for_position: 700,
+      extras: 1000,
+      total: 2600 + 1000,
       salary_r_min: 1000,
       salary_r_mid: 1500,
       salary_r_max: 2000,
       bonus: 'Weekly Local',
+      compare_to_market: '98%'
     },
     {
       code: '1234568740',
@@ -220,10 +250,13 @@ export class DatabaseService {
       pay_range: 'PL_8',
       pay_grade: 'PL_8',
       salary_for_position: 700,
+      extras: 1000,
+      total: 2600 + 1000,
       salary_r_min: 1000,
       salary_r_mid: 1500,
       salary_r_max: 2000,
       bonus: 'Weekly Local',
+      compare_to_market: '98%'
     },
     {
       code: '1234568740',
@@ -240,10 +273,13 @@ export class DatabaseService {
       pay_range: 'PL_8',
       pay_grade: 'PL_8',
       salary_for_position: 1500,
+      extras: 1000,
+      total: 2600 + 1000,
       salary_r_min: 1000,
       salary_r_mid: 1500,
       salary_r_max: 2000,
       bonus: 'Weekly Local',
+      compare_to_market: '98%'
     },
     {
       code: '1234568740',
@@ -260,10 +296,13 @@ export class DatabaseService {
       pay_range: 'PL_8',
       pay_grade: 'PL_8',
       salary_for_position: 900,
+      extras: 1000,
+      total: 2600 + 1000,
       salary_r_min: 1000,
       salary_r_mid: 1500,
       salary_r_max: 2000,
       bonus: 'Weekly Local',
+      compare_to_market: '98%'
     },
     {
       code: '1234568740',
@@ -280,10 +319,13 @@ export class DatabaseService {
       pay_range: 'PL_8',
       pay_grade: 'PL_8',
       salary_for_position: 1500,
+      extras: 1000,
+      total: 2600 + 1000,
       salary_r_min: 1000,
       salary_r_mid: 1500,
       salary_r_max: 2000,
       bonus: 'Weekly Local',
+      compare_to_market: '98%'
     },
     {
       code: '1234568740',
@@ -300,10 +342,13 @@ export class DatabaseService {
       pay_range: 'PL_8',
       pay_grade: 'PL_8',
       salary_for_position: 1500,
+      extras: 1000,
+      total: 2600 + 1000,
       salary_r_min: 1000,
       salary_r_mid: 1500,
       salary_r_max: 2000,
       bonus: 'Weekly Local',
+      compare_to_market: '98%'
     },
     {
       code: '1234568740',
@@ -320,10 +365,13 @@ export class DatabaseService {
       pay_range: 'PL_8',
       pay_grade: 'PL_8',
       salary_for_position: 1500,
+      extras: 1000,
+      total: 2600 + 1000,
       salary_r_min: 1000,
       salary_r_mid: 1500,
       salary_r_max: 2000,
       bonus: 'Weekly Local',
+      compare_to_market: '98%'
     },
     {
       code: '1234568740',
@@ -340,10 +388,13 @@ export class DatabaseService {
       pay_range: 'PL_8',
       pay_grade: 'PL_8',
       salary_for_position: 1500,
+      extras: 1000,
+      total: 2600 + 1000,
       salary_r_min: 1000,
       salary_r_mid: 1500,
       salary_r_max: 2000,
       bonus: 'Weekly Local',
+      compare_to_market: '98%'
     },
     {
       code: '1234568740',
@@ -360,10 +411,13 @@ export class DatabaseService {
       pay_range: 'PL_8',
       pay_grade: 'PL_8',
       salary_for_position: 1500,
+      extras: 1000,
+      total: 2600 + 1000,
       salary_r_min: 1000,
       salary_r_mid: 1500,
       salary_r_max: 2000,
       bonus: 'Weekly Local',
+      compare_to_market: '98%'
     },
     {
       code: '1234568740',
@@ -380,10 +434,13 @@ export class DatabaseService {
       pay_range: 'PL_8',
       pay_grade: 'PL_8',
       salary_for_position: 1500,
+      extras: 1000,
+      total: 2600 + 1000,
       salary_r_min: 1000,
       salary_r_mid: 1500,
       salary_r_max: 2000,
       bonus: 'Weekly Local',
+      compare_to_market: '98%'
     },
     {
       code: '1234568740',
@@ -400,18 +457,19 @@ export class DatabaseService {
       pay_range: 'PL_8',
       pay_grade: 'PL_8',
       salary_for_position: 2600,
+      extras: 1000,
+      total: 2600 + 1000,
       salary_r_min: 1000,
       salary_r_mid: 1500,
       salary_r_max: 2000,
       bonus: 'Weekly Local',
+      compare_to_market: '98%'
     },
   ];
 
   getPuestos() {
     return this.puestos;
   }
-
-  addPositon() {}
 
   getTable() {
     let initial_table: any = [];
@@ -482,8 +540,11 @@ export interface Puestos {
   pay_range: string;
   pay_grade: string;
   salary_for_position: number;
+  extras: number;
+  total: number;
   salary_r_min: number;
   salary_r_mid: number;
   salary_r_max: number;
   bonus: string;
+  compare_to_market: string;
 }

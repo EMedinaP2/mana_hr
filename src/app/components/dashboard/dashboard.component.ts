@@ -86,7 +86,7 @@ export class DashboardComponent implements OnInit {
     this.subTable = [];
     this.table.forEach((element: any) => {
       if (job_title == element.job_title) {
-        this.subTable.push(element.jobs);
+        this.subTable = element.jobs;
         console.log(this.subTable);
       }
     });
