@@ -61,6 +61,9 @@ export class LoginComponent {
         user = usr.user;
         console.log('sesion correcta ', user);
         session = true;
+
+        document.cookie = `user = ${user}`
+        document.cookie = `password = ${password}`
       }
     });
     if (session) {

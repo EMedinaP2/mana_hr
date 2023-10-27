@@ -31,7 +31,7 @@
   </div>
 </div>
 <div class="table_div">
-  <div class="table_title">
+  <div class="table_title" id="prueba">
     <p>Jobs</p>
     <button (click)="goToAddPosition()" class="add_new_job">
       Add new job +
@@ -43,7 +43,6 @@
         <th></th>
         <th></th>
         <th></th>
-        <th></th>
         <th>Number of eployees</th>
         <th></th>
         <th>Distribution of underpaid/overpaid employees</th>
@@ -51,31 +50,49 @@
       <tr class="tr2">
         <th>Job Category</th>
         <th>Number</th>
-        <th>Salaries ⓘ</th>
         <th style="color: red">Underpaid</th>
         <th style="color: orange">Corresponding to the market</th>
         <th style="color: green">Overpaid</th>
         <th></th>
       </tr>
-      <tr *ngFor="let table of table; index as i" class="valores_tabla">
+      <tr
+        *ngFor="let table of table; index as i"
+        class="valores_tabla"
+        (click)="makeSubTable(table.job_title)"
+        id="{{ table.job_title }}"
+      >
         <td>{{ table.job_title }}</td>
         <td>{{ table.number }}</td>
-        <td>{{ table.salaries }}</td>
         <td>{{ table.salary_level.underpaid }}</td>
         <td>{{ table.salary_level.normal }}</td>
-        <td>{{ table.salary_level.overpaid }}</td>  
+        <td>{{ table.salary_level.overpaid }}</td>
         <td>
-          <div class="graph{{i}} graph">
-            <div style="background-color: red; height: 100%; width: 35%"></div>
-            <div
-              style="background-color: orange; height: 100%; width: 25%"
-            ></div>
-            <div
-              style="background-color: green; height: 100%; width: 40%"
-            ></div>
-          </div>
+          <div class="graph" id="graph{{ i }}"></div>
         </td>
       </tr>
     </table>
+  </div>
+  <div *ngIf="modal == true" class="modal_exterior" (click)="showModal()">
+    <div class="modal table2_div" id="modal">
+      <table class="table">
+        <tr>{{job_title}}</tr>
+        <tr class="tr1">
+          <th></th>
+          <th></th>
+          <th></th>
+          <th>Number of eployees</th>
+          <th></th>
+          <th>Distribution of underpaid/overpaid employees</th>
+        </tr>
+        <tr class="tr2">
+          <th>Job Category</th>
+          <th>Number</th>
+          <th style="color: red">Underpaid</th>
+          <th style="color: orange">Corresponding to the market</th>
+          <th style="color: green">Overpaid</th>
+          <th></th>
+        </tr>
+      </table>
+    </div>
   </div>
 </div>
