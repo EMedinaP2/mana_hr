@@ -21,7 +21,7 @@ export class PuestoService {
    }
 
    getPositions():Observable<Puesto[]>{
-    const catalogRef = collection(this.firestore, 'catalogs')
+    const catalogRef = collection(this.firestore, 'positions')
       return collectionData(catalogRef, {idField:'id'}) as Observable<Puesto[]>
    }
 

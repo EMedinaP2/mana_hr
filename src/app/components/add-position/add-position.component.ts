@@ -23,7 +23,7 @@ export class AddPositionComponent {
   bonusCatalog: Catalog[] = []
   changeReasonCatalog: Catalog[] = []
   companyCatalog: Catalog[] = []
-
+  positions: Puesto[] = []
 
   ngOnInit() {
     this.puestos = this.databaseService.getPuestos();
@@ -34,6 +34,7 @@ export class AddPositionComponent {
     this.catalogService.getCatalogByName("Bonus").subscribe(catalogs => this.bonusCatalog = catalogs)
     this.catalogService.getCatalogByName("Change reason").subscribe(catalogs => this.changeReasonCatalog = catalogs)
     this.catalogService.getCatalogByName("Company").subscribe(catalogs => this.companyCatalog = catalogs)
+    this.positionService.getPositions().subscribe(positions => this.positions = positions)
   }
   constructor(private router: Router,
     private fb: FormBuilder,
@@ -236,7 +237,9 @@ export class AddPositionComponent {
       compare_to_market: "%" +  ((total) * 100 / this.formPuesto.value.salary_r_mid).toFixed(2)
     }
     this.positionService.addPosition(nuevoPuesto)
-    console.log(this.databaseService.getPuestos())
+    console.log("Puestos: ", this.positions )
+
+    console.log(this.positionService.getPositions())
     this.goBack()
   }
 }
