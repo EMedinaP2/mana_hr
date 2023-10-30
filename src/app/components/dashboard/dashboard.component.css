@@ -106,7 +106,7 @@ h2 {
 }
 
 .logout:hover {
-  color: blue;
+  color: red;
   cursor: pointer;
 }
 

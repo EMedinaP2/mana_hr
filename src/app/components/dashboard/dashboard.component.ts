@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { empty } from 'rxjs';
+import { PuestoService } from 'src/app/services/puesto.service';
 import { DatabaseService, Puestos } from 'src/app/services/database.service';
 
 @Component({
@@ -16,16 +17,21 @@ export class DashboardComponent implements OnInit {
   modal = false;
   job_title = '';
 
-  constructor(private router: Router, private databaseSrv: DatabaseService) {}
+  constructor(
+    private router: Router,
+    private puestoSrv: PuestoService,
+    private databaseSrv: DatabaseService
+  ) {}
 
   ngOnInit() {
-    this.table = this.databaseSrv.getTable();
-
-    console.log('table: ', this.databaseSrv.getTable());
-
     this.user = this.getCookieUser('user')!;
 
-    this.setGraphs();
+    this.puestoSrv.getPositions().subscribe({
+      next: (x) => {
+        (this.puestos = x), console.log('this.puestos[]: ', this.puestos), this.makeTable();
+      },
+      error: (err) => console.log('An error ocurred ', err),
+    });
   }
 
   getCookieUser(user: string) {
@@ -53,6 +59,60 @@ export class DashboardComponent implements OnInit {
 
   goToAddPosition() {
     this.router.navigate(['/add-position']);
+  }
+
+  makeTable() {
+    let initial_table: any = [];
+
+    this.puestos.forEach((puesto) => {
+      let underpaid_const = 1;
+      let normalpaid_const = 1;
+      let overpaid_const = 1;
+
+      let old_puesto = initial_table.find((element: any) => {
+        return element.job_title == puesto.job_title;
+      });
+      // Ya existe el puesto en el arreglo
+      if (old_puesto) {
+        old_puesto.number++;
+
+        if (puesto.salary_for_position > puesto.salary_r_max) {
+          old_puesto.salary_level.overpaid += overpaid_const;
+        } else if (puesto.salary_for_position < puesto.salary_r_min) {
+          old_puesto.salary_level.underpaid += underpaid_const;
+        } else {
+          old_puesto.salary_level.normal += normalpaid_const;
+        }
+      } else {
+        // No existe el puesto en el arreglo
+        let salary_level = {};
+        let jobs: any = [];
+
+        if (puesto.salary_for_position > puesto.salary_r_max) {
+          salary_level = { underpaid: 0, normal: 0, overpaid: 1 };
+        } else if (puesto.salary_for_position < puesto.salary_r_min) {
+          salary_level = { underpaid: 1, normal: 0, overpaid: 0 };
+        } else {
+          salary_level = { underpaid: 0, normal: 1, overpaid: 0 };
+        }
+
+        this.puestos.forEach((element) => {
+          if (element.job_title == puesto.job_title) {
+            jobs.push(element);
+          }
+        });
+
+        initial_table.push({
+          job_title: puesto.job_title,
+          number: 1,
+          jobs: jobs,
+          salary_level: salary_level,
+        });
+      }
+    });
+    console.log("initial_table: ", initial_table)
+    this.table = initial_table;
+    this.setGraphs();
   }
 
   setGraphs() {
@@ -101,15 +161,4 @@ export class DashboardComponent implements OnInit {
       this.modal = true;
     }
   }
-  // insertSubTable(job_title: any) {
-  //   console.log('insertSubTable: ', job_title);
-  //   var table: HTMLTableElement = <HTMLTableElement>(
-  //     document.getElementById('table1')
-  //   );
-
-  //   let template = `<tr class="valores_tabla">
-  //                     <td> ${job_title} </td>
-  //                   <tr>`;
-  //   table.innerHTML += template;
-  // }
 }
