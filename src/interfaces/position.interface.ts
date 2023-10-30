@@ -1,5 +1,3 @@
-import Catalog from "./catalog.interface";
-
 export default interface Puesto{
     id?:string;
     code: string;
@@ -21,8 +19,8 @@ export default interface Puesto{
     salary_r_min: number;
     salary_r_mid: number;
     salary_r_max: number;
-    bonus: string;
-    benefits: string;
+    bonus: any;
+    benefits: any;
     compare_to_market: string;
   }
   
