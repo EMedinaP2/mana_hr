@@ -76,9 +76,9 @@ export class DashboardComponent implements OnInit {
       if (old_puesto) {
         old_puesto.number++;
 
-        if (puesto.salary_for_position > puesto.salary_r_max) {
+        if (puesto.total > puesto.salary_r_max) {
           old_puesto.salary_level.overpaid += overpaid_const;
-        } else if (puesto.salary_for_position < puesto.salary_r_min) {
+        } else if (puesto.total < puesto.salary_r_min) {
           old_puesto.salary_level.underpaid += underpaid_const;
         } else {
           old_puesto.salary_level.normal += normalpaid_const;
@@ -88,9 +88,9 @@ export class DashboardComponent implements OnInit {
         let salary_level = {};
         let jobs: any = [];
 
-        if (puesto.salary_for_position > puesto.salary_r_max) {
+        if (puesto.total > puesto.salary_r_max) {
           salary_level = { underpaid: 0, normal: 0, overpaid: 1 };
-        } else if (puesto.salary_for_position < puesto.salary_r_min) {
+        } else if (puesto.total < puesto.salary_r_min) {
           salary_level = { underpaid: 1, normal: 0, overpaid: 0 };
         } else {
           salary_level = { underpaid: 0, normal: 1, overpaid: 0 };
