@@ -1,0 +1,51 @@
+runtime: nodejs16
+service: manahr
+instance_class: F2
+
+handlers:
+
+  - url: /(.*\.js)
+    static_files: dist/mana_hr/\1
+    upload: dist/mana_hr/(.*\.js)
+
+  - url: /(.*\.css)
+    static_files: dist/mana_hr/\1
+    upload: dist/mana_hr/(.*\.css)
+
+  - url: /(.*\.html)
+    static_files: dist/mana_hr/\1
+    upload: dist/mana_hr/(.*\.html)
+
+  - url: /(.*\.ico)
+    static_files: dist/mana_hr/\1
+    upload: dist/mana_hr/(.*\.ico)
+
+  - url: /(.*\.ttf)
+    static_files: dist/mana_hr/\1
+    upload: dist/mana_hr/(.*\.ttf)
+
+  - url: /(.*\.svg)
+    static_files: dist/mana_hr/\1
+    upload: dist/mana_hr/(.*\.svg)
+
+  - url: /assets/images/(.*\.(svg))$
+    mime_type: image/svg+xml
+    static_files: dist/mana_hr/assets/images/\1
+    upload: dist/mana_hr/assets/images/.*\.(svg)$
+
+  - url: /assets/fonts/(.*\.(ttf))$
+    mime_type: font/ttf
+    static_files: dist/mana_hr/assets/fonts/\1
+    upload: dist/mana_hr/assets/fonts/.*\.(ttf)$
+
+  - url: /
+    static_files: dist/mana_hr/index.html
+    upload: dist/mana_hr/index.html
+
+  - url: /(.*)
+    static_files: dist/mana_hr/index.html
+    upload: dist/mana_hr/index.html
+  
+  - url: /(.*\.(ico|css|png|jpg|gif|woff2|woff|ttf|svg|eot))$
+    static_files: dist/mana_hr/\1
+    upload: dist/mana_hr/(.*\.(ico|css|png|jpg|gif|woff2|woff|ttf|svg|eot))$
